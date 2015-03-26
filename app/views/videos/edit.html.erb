@@ -1,0 +1,7 @@
+<h1>編輯影片</h1>
+
+<%= form_for @video, :url => video_path(@video), :method => :patch do |f| %>
+
+<%= render :partial => 'form', :locals => { :f => f} %>
+
+<% end %>

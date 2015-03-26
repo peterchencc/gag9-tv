@@ -1,0 +1,7 @@
+<h1>新增影片</h1>
+
+<%= form_for @video, :url => videos_path do |f| %>
+
+<%= render :partial => 'form', :locals => { :f => f} %>
+
+<% end %>

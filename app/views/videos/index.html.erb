@@ -1,0 +1,36 @@
+<h1>video list</h1>
+
+<%= link_to "首頁", root_path %>  <%= link_to "新增影片連結", new_video_path %>
+
+
+<p style="color: green"><%= flash[:notice] %></p>
+<p style="color: red"><%= flash[:alert] %></p>
+
+<%= paginate @videos %>
+
+<table>
+  <thead>
+    <tr>
+      <td> # </td>
+      <td> Title</td>
+      <td> Descroption </td>
+      <td> # </td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @videos.each do |v| %>
+    <tr>
+      <td> # </td>
+      <td><%= v.name %></td>
+      <td><%= v.url %></td>
+      <td>
+        <!-- <%= link_to "詳細", video_path(v) %> -->
+        <%= link_to "編輯", edit_video_path(v) %>
+        <%= link_to "刪除", video_path(v), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

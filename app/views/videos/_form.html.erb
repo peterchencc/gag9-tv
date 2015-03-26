@@ -1,0 +1,29 @@
+  <% if @video.errors.any? %>
+        <ul>
+        <% @video.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+  <% end %>
+
+  <table>
+    <tbody>
+      <tr>
+        <td>name</td>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <td>url</td>
+        <td><%= f.text_field :url %></td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td><%= f.text_area :description %></td>
+      </tr>
+      <tr>
+        <td>
+          <%= link_to "返回", :back %> <%= f.submit "送出" %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
