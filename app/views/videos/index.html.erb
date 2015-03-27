@@ -1,10 +1,18 @@
 <h1>video list</h1>
 
-<%= link_to "首頁", root_path %>  <%= link_to "新增影片連結", new_video_path %>
+<%= link_to "首頁", root_path %>
+<%= link_to "新增", videos_path %>
+
 
 
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:alert] %></p>
+<%= form_for @video do |f| %>
+
+<%= render :partial => 'form', :locals => { :f => f} %>
+
+<% end %>
+
 
 <%= paginate @videos %>
 
@@ -25,7 +33,7 @@
       <td><%= v.url %></td>
       <td>
         <!-- <%= link_to "詳細", video_path(v) %> -->
-        <%= link_to "編輯", edit_video_path(v) %>
+        <%= link_to "編輯", videos_path( :id => v.id)  %>
         <%= link_to "刪除", video_path(v), :data => { :confirm => "Are you sure?" }, :method => :delete %>
       </td>
     </tr>

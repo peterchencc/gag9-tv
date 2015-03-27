@@ -3,7 +3,13 @@ class VideosController < ApplicationController
   before_action :set_video, :only => [ :show, :edit, :update, :destroy ]
 
   def index
-    @videos = Video.page(params[:page]).per(5)
+    @videos = Video.page(params[:page]).per(10)
+
+    if params[:id]
+      set_video
+    else
+      @video = Video.new
+    end
   end
 
   def new
@@ -16,7 +22,8 @@ class VideosController < ApplicationController
       redirect_to videos_path
       flash[:notice] = "新增成功"
     else
-      render :action => :new
+      @videos = Video.page(params[:page]).per(10)
+      render :action => :index
     end
   end
 
@@ -33,7 +40,8 @@ class VideosController < ApplicationController
       redirect_to videos_path
       flash[:notice] = "編輯成功"
     else
-      render :action => :edit
+      @videos = Video.page(params[:page]).per(10)
+      render :action => :index
     end
   end
 
