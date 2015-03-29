@@ -22,7 +22,7 @@
       </tr>
       <tr>
         <td><%= f.label "狀態" %></td>
-        <td><%= f.select :status, options_for_select([["default","default"] ,["public", "public"],["delete","delete"]]) %></td>
+        <td><%= f.select :status, [['預覽','default'], ['發布', 'public']] %></td>
       </tr>
       <tr>
         <td><%= f.label "簡介" %></td>
