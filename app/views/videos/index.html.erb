@@ -7,6 +7,7 @@
 
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:alert] %></p>
+
 <%= form_for @video do |f| %>
 
 <%= render :partial => 'form', :locals => { :f => f} %>
