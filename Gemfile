@@ -32,7 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "kaminari"
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
-
+gem 'fancybox2-rails', '~> 0.2.8'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

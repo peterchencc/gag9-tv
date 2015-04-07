@@ -2,28 +2,52 @@
   <div class="">
     <h1 class="text-center">video list</h1>
     <div class="col-md-12">
-      <%= link_to root_path ,:class => "btn btn-default" do %>
+      <!--       <%= link_to root_path ,:class => "btn btn-default" do %>
       <span class="glyphicon glyphicon-home"></span> 首頁
-      <% end %>
-      <%= link_to  videos_path ,:class => "btn btn-primary new-video-btn" do %>
-      <span class="glyphicon glyphicon-plus"></span> 新增
-      <% end %>
+      <% end %> -->
+      <%= link_to glyph(:home)+"首頁", root_path ,:class => "btn btn-default"  %>
+      <button class="btn btn-primary" data-toggle="modal" data-target="#myModal"><%= glyph(:plus) %>新增</button>
+      <%#= link_to glyph(:plus)+"新增", videos_path ,:class => "btn btn-primary new-video-btn" %>
+      <!-- <a href="#video-form" id="btnForm">Load Form</a> -->
     </div>
     <div class="col-md-12">
       <% if flash[:notice] %>
-        <div class="alert alert-success"><%= flash[:notice] %></div>
+      <div class="alert alert-success"><%= flash[:notice] %></div>
       <% end %>
       <% if flash[:alert] %>
-        <div class="alert alert-warning"><%= flash[:alert] %></div>
+      <div class="alert alert-warning"><%= flash[:alert] %></div>
       <% end %>
     </div>
-    <div class="video-form col-md-12">
-      <div class="col-md-6 col-md-offset-3">
-        <%= form_for @video, :html => {:class => 'form-horizontal'} do |f| %>
-        <%= render :partial => 'form', :locals => { :f => f} %>
-        <% end %>
+
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="">
+        <div class="col-md-12 modal-body">
+          <div class="col-md-6 col-md-offset-3 ">
+            <%= form_for @video, :html => {:class => 'form-horizontal'} do |f| %>
+            <%= render :partial => 'form', :locals => { :f => f} %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+
       </div>
     </div>
+  </div>
+</div>
     <%= paginate @videos %>
     <div class="col-md-12">
       <table class="table table-striped table-bordered table-hover">
@@ -41,12 +65,12 @@
           <tr>
             <td> # </td>
             <td><%= v.name %></td>
-            <td><%= v.url %></td>
+            <td><%= link_to "#{v.url}",  v.url , :target => "_blank" %></td>
             <td>
               <% if v.status =='public' %>
-              <span class="glyphicon glyphicon-check"></span> 發布中
+              <%= glyph(:check) %> 發布中
               <% else %>
-              <span class="glyphicon glyphicon-paperclip"></span> 預覽
+              <%= glyph(:paperclip) %> 預覽
               <% end %>
             </td>
             <td>
@@ -66,6 +90,19 @@
   </div>
 </div>
 
+
 <script type="text/javascript">
+
+// $(document).ready(function() {
+//   $("#video-form").hide();
+//   $("#btnForm").fancybox();
+// });
+// $(document).ready(function(){
+//   $(".video-form").hide();
+//     $(".new-video-btn").click(function(){
+//         $(".video-form").toggle('slow');
+//     });
+// });
+
 
 </script>
