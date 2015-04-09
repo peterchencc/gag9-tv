@@ -1,5 +1,5 @@
 class StaticsController < ApplicationController
   def index
-    @videos = Video.all
+    @videos = Video.where( :status => 'public' )
   end
 end
