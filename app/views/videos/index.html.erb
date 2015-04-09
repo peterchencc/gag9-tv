@@ -59,14 +59,12 @@
           <tr>
             <td> # </td>
             <td><%= v.name %></td>
-            <td><%= link_to "#{v.url}",  v.url , :target => "_blank" %></td>
+            <td><%= link_to v.url, :target => "_blank" %></td>
             <td><%= time_tag(v.public_datetime) %></td>
             <td>
-              <% if v.status =='public' %>
-              <%= glyph(:check) %> 發布中
-              <% else %>
-              <%= glyph(:paperclip) %> 預覽
-              <% end %>
+
+              <%= display_video_status(v) %>
+
             </td>
             <td>
               <!-- <%= link_to "詳細", video_path(v) %> -->

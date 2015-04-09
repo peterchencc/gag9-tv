@@ -28,7 +28,7 @@
       <div class="form-group">
         <%= f.label "狀態", :class => "col-sm-2 control-label"  %>
         <div class="col-sm-2">
-        <%= f.select(:status, [['預覽','default'], ['發布', 'public']], {}, {:class => 'form-control'}) %>
+        <%= f.select(:status, video_status_options, {}, {:class => 'form-control'}) %>
         </div>
       </div>
       <div class="clearfix"></div>

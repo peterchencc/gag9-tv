@@ -3,7 +3,7 @@ class VideosController < ApplicationController
   before_action :set_video, :only => [ :show, :edit, :update, :destroy ]
 
   def index
-    @videos = Video.page(params[:page]).per(10)
+    load_videos
 
     if params[:id]
       set_video
@@ -22,7 +22,7 @@ class VideosController < ApplicationController
       redirect_to videos_path
       flash[:notice] = "新增成功"
     else
-      @videos = Video.page(params[:page]).per(10)
+      load_videos
       render :action => :index
     end
   end
@@ -40,7 +40,7 @@ class VideosController < ApplicationController
       redirect_to videos_path
       flash[:notice] = "編輯成功"
     else
-      @videos = Video.page(params[:page]).per(10)
+      load_videos
       render :action => :index
     end
   end
@@ -53,6 +53,10 @@ class VideosController < ApplicationController
 
 
   private
+
+  def load_videos
+     @videos = Video.page(params[:page]).per(10)
+  end
 
   def set_video
     @video = Video.find(params[:id])
