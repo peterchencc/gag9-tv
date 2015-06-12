@@ -1,26 +1,31 @@
-<%= link_to "dashboard", videos_path %>
+<div class="container">
+  <div class="row">
+  <%= link_to "dashboard", videos_path %>
 
-<p>hello gag9-tv</p>
+  <div class="jumbotron">
+    <h1>hello gag9-tv</h1>
 
-<table>
-  <thead>
-    <tr>
-      <td> # </td>
-      <td> Title</td>
-      <td> Descroption </td>
-      <td> # </td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @videos.each do |v| %>
-    <tr>
-      <td> # </td>
-      <td><%= v.name %></td>
-      <td><%= v.url %></td>
-      <td><%= v.description %></td>
-
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <td> # </td>
+        <td> Title</td>
+        <td> Descroption </td>
+        <td> # </td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @videos.each do |v| %>
+      <tr>
+        <td> # </td>
+        <td><%= v.name %></td>
+        <td><%= v.url %></td>
+        <td><%= v.description %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>
